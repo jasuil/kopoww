@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.mappe.BoardMapper2">
+
+ <insert id="create"> 
+ insert into hugi(title, content, id, rootid, nodeid)  
+ values(#{title},#{content}, #{id}, #{rootid}, #{nodeid}) 
+ </insert> 
+
+ <select id="read" resultType="org.zerock.domain.BoardVO2">
+ select 
+   id, title, content, rootid, nodeid
+ from 
+   hugi
+ where id = #{id}
+ </select>
+ 
+  <select id="readRoot" resultType="org.zerock.domain.BoardVO2">
+ select 
+max(rootid) as rootid   ,max(id) as id, max(nodeid) as nodeid 
+ from 
+   hugi
+
+ </select>
+ 
+
+ <update id="update">
+ update tbl_board set title =#{title}, content =#{content} 
+ where id = #{id}
+ </update>
+
+ <delete id="delete">
+ delete from tbl_board where id = #{id}
+ </delete>
+
+ <select id="listAll" resultType="org.zerock.domain.BoardVO2">
+ <![CDATA[
+ select  
+   id, title, content, date, viewcnt  
+ from  
+ 	hugi  
+
+ order by id desc, date desc 
+ ]]>   
+ </select>
+ 
+ <select id="listPage" resultType="BoardVO2">
+ <![CDATA[
+ select  
+    id, title, content, date, viewcnt  
+ from 
+  hugi 
+
+ order by id desc, date desc
+ limit #{page}, 10
+ ]]>   
+ </select>
+
+  <select id="listCriteria" resultType="BoardVO2">
+ <![CDATA[
+select  
+    id, title, content, date, viewcnt  
+ from  
+  hugi 
+
+ order by id desc, date desc 
+ limit #{pageStart}, #{perPageNum} 
+ ]]>   
+ </select>
+
+
+
+ <select id="countPaging" resultType="int">
+ <![CDATA[
+ select  
+   count(id)  
+ from  
+   hugi 
+ where  
+   id > 0  
+ ]]> 
+ </select>
+
+
+
+<sql id="search">
+ <if test="searchType != null" > 
+   <if test="searchType == 't'.toString()">
+     and title like CONCAT('%', #{keyword}, '%')
+   </if>
+   <if test="searchType == 'c'.toString()">
+     and content like CONCAT('%', #{keyword}, '%')
+   </if>
+   <if test="searchType == 'w'.toString()">
+     and writer like CONCAT('%', #{keyword}, '%')
+   </if>     
+   <if test="searchType == 'tc'.toString()">
+     and ( title like CONCAT('%', #{keyword}, '%') OR content like CONCAT('%', #{keyword}, '%'))
+   </if>        
+   <if test="searchType == 'cw'.toString()">
+     and ( content like CONCAT('%', #{keyword}, '%') OR writer like CONCAT('%', #{keyword}, '%'))
+   </if>        
+   <if test="searchType == 'tcw'.toString()">
+     and (   title like CONCAT('%', #{keyword}, '%') 
+           OR 
+             content like CONCAT('%', #{keyword}, '%') 
+           OR 
+             writer like CONCAT('%', #{keyword}, '%'))
+   </if>              
+ </if>  
+</sql>
+ 
+<select id="listSearch" resultType="BoardVO2">
+<![CDATA[  
+  select *  
+  from tbl_board  
+  where id > 0  
+]]>   
+
+  <include refid="search"></include>
+  
+<![CDATA[    
+  order by id desc 
+  limit #{pageStart}, #{perPageNum} 
+]]>   
+</select>
+  
+<select id="listSearchCount" resultType="int">
+<![CDATA[  
+  select count(id)  
+  from tbl_board  
+  where id > 0  
+]]> 
+  <include refid="search"></include>
+ 
+</select>  
+  
+</mapper>

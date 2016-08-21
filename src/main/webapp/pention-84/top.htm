@@ -1,0 +1,174 @@
+﻿<!-제목: 홈피 첫 화면 상단 메뉴->
+<!-날짜: 2016.07.19->
+<!-저자: 짱성일->
+<!-하고싶은 말: jsp은 과연 내 손안에 있소이다!->
+<! DOCTYPE html >
+<html>
+<head>
+<title>펜션 홈피</title>
+<style type='text/css'>
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+
+td{ font-size:30; text-align:center; font-family: 'Nanum Pen Script', serif;
+ font-weight:bold; }
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:none;}
+a:activate {text-decoration:none;}
+#my{position:absolute;z-index:-1;}
+</style>
+<script language='javascript' type='text/javascript'>
+//<![CDATA[
+var muCnt = 6; <!-- 맨 위의 메뉴를 선택할 수 있는 숫자를 부여함 -->
+
+function fncShow(pos){
+var i=0;
+	for(i; i<muCnt;i++)
+	{
+		var obj = document.getElementById("menu"+i);
+		var obj2 = document.getElementById("m"+i);
+	
+		if(i==pos){
+			obj.style.display = '';
+			obj2.style.color = "#ffff00";
+		}else{
+			obj.style.display = 'none';
+			obj2.style.color = "#000000";
+		}
+	}
+}
+
+function fncHide(pos){
+	var obj = document.getElementById("menu"+pos);
+	obj.style.display = 'none';
+}
+
+//]]>
+</script>
+</head>
+<body>
+ <canvas id="my" width="1500" height="100" ></canvas>
+<script>
+var canvas = document.getElementById('my');
+var context = canvas.getContext('2d');
+
+var gradient = context.createLinearGradient(0,0,2000,0);
+gradient.addColorStop(0, "white");
+gradient.addColorStop(1, "green");
+
+context.fillStyle=gradient;
+context.fillRect(0,0,2000,100);
+</script>
+<center>
+<table cellpadding='0' cellspacing='0' border='0' width='750'>
+<td width='100'> <a href='main.htm' target=main><img src="photo/logo.png" width='200' height='80' border='0' alt="photo/logo.png 가 필요해"></a>
+</td>
+<td>
+<table cellpadding='0' cellspacing='1' border='0' width='750' height='60'>
+	<tr height = '30'>
+		<td width='100' onmouseover='fncShow(0);' id='m0'><b> 소개 </b></td>
+		<td width='100' onmouseover='fncShow(1);' id='m1'><b> 찾아오기 </b></td>
+		<td width='120' onmouseover='fncShow(2);' id='m2'><b> 주변여행지 </b></td>
+		<td width='100' onmouseover='fncShow(3);' id='m3'><b> 예약하기 </b></td>
+		<td width='100' onmouseover='fncShow(4);' id='m4'><b> 펜션소식 </b></td>
+		<td width='130' onmouseover='fncShow(5);' id='m5'><b> 사장님페이지 </b></td>
+		<td width='100'></td>
+	</tr>
+	<tr height='30'>
+		<td colspan='7'> <!-- 위에 칸이 7개다 -->
+		
+			<table id='menu0' style='display:none;' cellpadding='0' cellspacing='0'  border='0' width='600' height='30'>
+				<tr>
+					<td width='0'></td>
+					<td width='600' style='text-align:left;'>
+						<a href='a_01.htm' target=main title="블루마운틴">
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#0066cc'>| 블루마운틴</span>
+						</a>
+						<a href='a_02.htm' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#0066cc'>| 루왁</span>
+						</a>
+						<a href='a_03.htm' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#0066cc'>| 도미토리</span>
+						</a>
+						<a href='a_04.htm' target=main>
+						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#0066cc'>| 수프리모 |</span>
+						</a>
+					</td>
+				</tr>
+			</table>
+			<table id='menu1' style='display:none;' cellpadding='0' cellspacing='0' width='600' height='30'>
+				<tr>
+					<td width='100'></td>
+					<td width='500' style='text-align:left;'>
+						<a href='b_01.htm' target=main>
+						<span onmouseover=this.style.color='#ff6600' onmouseout=this.style.color='#0066cc'>| 찾아오는길</span>
+						</a>
+						<a href='b_02.htm' target=main>
+						<span onmouseover=this.style.color='#ff6600' onmouseout=this.style.color='#0066cc'>| 대중교통이용</span>
+						</a>
+						<a href='b_03.htm' target=main>
+						<span onmouseover=this.style.color='#ff6600' onmouseout=this.style.color='#0066ff'>| 자가용이용 |</span>
+						</a>
+					</td>
+				</tr>
+			</table>
+			<table id='menu2' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='700' height='30'>
+				<tr>
+				
+					<td width='700' style='text-align:left;' colspan='7'>
+						<a href='c_01.htm' target=main>
+						<span onmouseover=this.style.color='#ff6600' onmouseout=this.style.color='#0066cc'>| 모항갯벌해수욕장</span>
+						</a>
+						<a href='c_02.htm' target=main>
+						<span onmouseover=this.style.color='#ff6600' onmouseout=this.style.color='#0066cc'>| 금구원야외조각미술관</span>
+						</a>
+						<a href='c_03.htm' target=main>
+						<span onmouseover=this.style.color='#ff6600' onmouseout=this.style.color='#0066cc'>| 부안영상테마파크 |</span>
+						</a>
+					</td>
+				</tr>
+			</table>
+			<table id='menu3' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='600' height='30'>
+				<tr>
+					<td width='300'></td>
+					<td width='300' style='text-align:left;'>
+						<a href='d_01.jsp' target=main>
+						<span onmouseover=this.style.color='#ff6600' onmouseout=this.style.color='#0066cc'>| 예약상황</span>
+						</a>
+						<a href='d_02.jsp' target=main>
+						<span onmouseover=this.style.color='#ff6600' onmouseout=this.style.color='#0066cc'>| 예약하기 |</span>
+						</a>						
+					</td>
+				</tr>
+			</table>
+			<table id='menu4' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='700' height='30'>
+				<tr>
+					<td width='400'></td>
+					<td width='300' style='text-align:left;'>
+						<a href='gongji/gongji_list.jsp' target=main>
+						<span onmouseover=this.style.color='#ff6600' onmouseout=this.style.color='#0066cc'>| 펜션소식</span>
+						</a>
+						<a href='gongji2/gongji_list.jsp' target=main>
+						<span onmouseover=this.style.color='#ff6600' onmouseout=this.style.color='#0066cc'>| 이용후기 |</span>
+						</a>						
+					</td>
+				</tr>
+			</table>
+				<table id='menu5' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='700' height='30'>
+				<tr>
+					<td width='500'></td>
+					<td width='200' colspan='7' style='text-align:left;' color='#0066cc'>
+						<a href='f_00.jsp' target=main>
+						<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#0066cc'>| 사장님만!!! |</span>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+</td>
+</table>	
+</center>
+</body>
+</html>

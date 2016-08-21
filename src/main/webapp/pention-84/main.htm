@@ -1,0 +1,59 @@
+﻿<!-제목: 홈피 첫 화면 하단->
+<!-날짜: 2016.07.19->
+<!-저자: 짱성일->
+<!-하고싶은 말: jsp은 과연 내 손안에 있소이다!->
+<html>
+<head>
+<style>
+	@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+	<!--구글에서 오픈소스로 개방된 폰트를 웹 폰트 형식으로 사용한다.-->
+	
+	#my{position:absolute;z-index:-1;}
+	img.imgs{position:absolute;  left:0px; top:0px; z-index:0;}
+	p.jasuil2{position:absolute; font-family: 'Jeju Hallasan', cursive; color:#bbaadd;
+			left:900px; top:0px;z-index:1; font-size:60px;}
+	pre.jasuil{position:absolute; text-align:right;  color:#bbaadd;
+			font-size:40px; font-weight:bold; font-family: 'Jeju Hallasan', cursive; 
+			left:700px; top:200px; z-index:1;}
+	pre.adress{position:absolute; text-align:right;  color:#bbaadd;
+			font-size:40px; font-weight:bold; font-family: 'Jeju Hallasan', cursive; 
+			left:200px; top:600px; z-index:1;}
+</style>
+
+</head>
+<body>
+
+<p class="jasuil2">모항비치펜션</p>
+
+ <canvas id="my" width="1800" height="750" ></canvas>
+<script>
+var canvas = document.getElementById('my');
+var context = canvas.getContext('2d');
+
+var gradient = context.createLinearGradient(0,0,0,5000);
+gradient.addColorStop(0, "white");
+gradient.addColorStop(1, "blue");
+
+context.fillStyle=gradient;
+context.fillRect(0,0,10000,10000);
+</script>
+
+<table>
+<tr>
+<td>
+
+<img  class="imgs" src="photo/main.JPG" width="700" height="600"></td>
+
+<td><pre class="jasuil">
+아름다운 변산반도의 끝자락에
+ 당신의 추억을 만들어 드립니다.
+꿈같은 휴양지를 찾아
+ 더 이상 해외로 안 나가셔도 됩니다.
+여기, 모항비치펜션에서 
+그 휴양지를 느끼실 수가 있습니다.</pre></td>
+</tr>
+</table>
+<pre class="adress">지번 : 전북 부안군 변산면 도청리 204-13번지
+도로명 : 전북 부안군 변산로 3554-5 </pre>
+</body>
+</html>

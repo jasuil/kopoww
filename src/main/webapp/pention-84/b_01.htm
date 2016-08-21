@@ -1,0 +1,40 @@
+<!-제목: 펜션 오는길 지도->
+<!-날짜: 2016.07.25->
+<!-저자: 짱성일->
+<!-하고싶은 말: jsp은 과연 내 손안에 있소이다!->
+<html>
+<head>
+	<style>
+	body{margin:15px auto 0;} //상단여백 15px 좌우여백 자동 하단여백 0px
+	iframe.jasuil{ width:1000; height:600;z-index:0;}
+	pre.jasuil{ top:10px; left:300px; font-family:궁서;  font-size:40px; color:blue;z-index:1;}
+	</style>
+</head>
+<body>
+<center>
+
+<pre class="jasuil">찾아오실 곳</pre>
+
+<!-- * Daum 지도 - 지도퍼가기 -->
+<!-- 1. 지도 노드 -->
+<div id="daumRoughmapContainer1470360555115" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+
+<!--
+	2. 설치 스크립트
+	* 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+-->
+<script charset="UTF-8" class="daum_roughmap_loader_script" src="http://dmaps.daum.net/map_js_init/roughmapLoader.js"></script>
+
+<!-- 3. 실행 스크립트 -->
+<script charset="UTF-8">
+	new daum.roughmap.Lander({
+		"timestamp" : "1470360555115",
+		"key" : "ccq6",
+		"mapWidth" : "600",
+		"mapHeight" : "300"
+	}).render();
+</script>	
+
+</center>
+</body>
+</html>
