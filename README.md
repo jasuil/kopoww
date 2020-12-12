@@ -1,4 +1,4 @@
-# my first project when i studied at convergence technology campus of korea polytechinc
+# my first project, spring version
 
 ## pension information webservice
 
